@@ -1,40 +1,157 @@
-# BioUnlock — Android Fingerprint Laptop Unlock
+ <div align="center">
 
-BioUnlock is a **source-code starter project** for phone-assisted Windows session unlock.
+# 🔐 BioUnlock
 
-## Architecture
+### Android Biometric Authentication for Windows
 
-1. Android authenticates the user with `BiometricPrompt`.
-2. A private signing key is generated in Android Keystore with biometric authentication required.
-3. The phone signs a fresh challenge; fingerprint templates never leave Android.
-4. A Windows Credential Provider is the supported integration point for the Windows sign-in/lock screen.
+[![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20Windows-blue?style=for-the-badge)](https://github.com/adarshguptas/BioUnlock)
+[![Language](https://img.shields.io/badge/Language-Kotlin%20%7C%20C%2B%2B-orange?style=for-the-badge)](https://github.com/adarshguptas/BioUnlock)
+[![Status](https://img.shields.io/badge/Status-Prototype-yellow?style=for-the-badge)](https://github.com/adarshguptas/BioUnlock)
 
-## Repository layout
+**Bringing Android biometric authentication to Windows login workflows.**
 
-- `android/` — Android Studio project (Kotlin, AndroidX Biometric, Keystore signing core).
-- `windows/CredentialProvider/` — native C++ Credential Provider project scaffold and implementation notes.
-- `protocol/` — challenge/signature protocol documentation.
+[Explore Project](https://github.com/adarshguptas/BioUnlock) · [Report Bug](https://github.com/adarshguptas/BioUnlock/issues) · [Request Feature](https://github.com/adarshguptas/BioUnlock/issues)
 
-## Important status
+</div>
 
-This is a **starter source project, not a finished or tested unlock product**. The Android biometric/key-signing core is implemented. The Windows Credential Provider is a native integration scaffold: it must be completed, built, signed, installed, and tested on a disposable Windows test machine before it can unlock a session. Do not install an untrusted Credential Provider DLL on your primary Windows account.
+---
 
-The original MuleRun task page did not expose downloadable source files in its shared-page text, so this repository is a clean source implementation based on the architecture and choices described in the task, not a recovery of MuleRun's hidden generated files.
+## 🚀 About The Project
 
-## Requirements
+**BioUnlock** is an Android and Windows integration prototype that explores using smartphone biometric authentication as an additional method for Windows session unlocking.
 
-- Android Studio with Android SDK 35 and JDK 17.
-- Windows 10/11, Visual Studio 2022 with Desktop development with C++ and Windows SDK.
-- A BLE-capable Windows device and Android phone for the transport implementation.
-- For real Windows lock-screen integration, implement the documented Credential Provider interfaces and test in a VM.
+The project is based on Android BiometricPrompt, Android Keystore and a proposed cryptographic challenge-response architecture.
 
-## Build Android
+## ✨ Features
 
-Open `android/` in Android Studio and sync Gradle. The project uses Kotlin and AndroidX Biometric.
+- 🔐 Android biometric authentication
+- 🛡️ Secure key storage using Android Keystore
+- 🔑 Cryptographic challenge-signing concept
+- 📱 Android application starter
+- 💻 Windows Credential Provider scaffold
+- 📡 Bluetooth communication planned
+- 📖 Authentication protocol documentation
 
-## Security notes
+## 🛠️ Tech Stack
 
-- No fingerprint image/template is read or transmitted.
-- Private key material remains in Android Keystore.
-- The Windows side must verify a signed, single-use, time-limited challenge against the enrolled public key.
-- Add pairing, replay protection, rate limiting, key revocation, and secure enrollment before production use.
+| Technology | Purpose |
+|---|---|
+| Kotlin | Android development |
+| Android SDK | Mobile application |
+| AndroidX Biometric | Biometric authentication |
+| Android Keystore | Cryptographic key protection |
+| C++ | Windows integration scaffold |
+| CMake | Native build configuration |
+| Gradle | Android build system |
+
+## 📂 Project Structure
+
+```text
+BioUnlock/
+│
+├── android/
+│   └── app/
+│       └── src/
+│           └── main/
+│
+├── windows/
+│   └── CredentialProvider/
+│
+├── protocol/
+│   └── PROTOCOL.md
+│
+├── BioUnlock-1.0-release.apk
+├── .gitignore
+└── README.md
+```
+
+## ⚙️ Getting Started
+
+### Prerequisites
+
+- Android Studio
+- Android SDK
+- JDK 17
+- Windows 10/11 for future Windows integration
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/adarshguptas/BioUnlock.git
+```
+
+### 2. Navigate to Project
+
+```bash
+cd BioUnlock
+```
+
+### 3. Open Android Project
+
+Open the `android` folder in Android Studio.
+
+### 4. Build Application
+
+Allow Gradle synchronization and build the Android application using Android Studio.
+
+## 📥 Download APK
+
+The repository includes an Android release APK.
+
+[Download BioUnlock APK](https://github.com/adarshguptas/BioUnlock/raw/main/BioUnlock-1.0-release.apk)
+
+## 🔒 Security Architecture
+
+1. Android requests biometric authentication through BiometricPrompt.
+2. Android Keystore protects the private signing key.
+3. The proposed protocol uses a fresh cryptographic challenge.
+4. Windows is intended to verify the signed response.
+
+**Privacy:** Fingerprint templates are not intended to leave the Android device.
+
+## 🗺️ Development Roadmap
+
+- [x] Android project starter
+- [x] Biometric authentication core
+- [x] Android Keystore integration
+- [x] Protocol documentation
+- [x] Windows Credential Provider scaffold
+- [ ] Bluetooth communication
+- [ ] Complete Windows Credential Provider
+- [ ] Device pairing and enrollment
+- [ ] End-to-end testing
+- [ ] Production-ready release
+
+## ⚠️ Project Status
+
+BioUnlock is currently a **prototype/starter project**, not a fully functional Windows unlocking product.
+
+Bluetooth communication and complete Windows Credential Provider integration are still under development. The Windows scaffold is not ready for installation on a production machine.
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+1. Fork this repository.
+2. Create a new branch.
+3. Make your changes.
+4. Commit your changes.
+5. Submit a Pull Request.
+
+## 👨‍💻 Author
+
+**Adarsh Gupta**
+
+- GitHub: [@adarshguptas](https://github.com/adarshguptas)
+
+---
+
+<div align="center">
+
+### ⭐ Support The Project
+
+If you like BioUnlock, consider giving this repository a star!
+
+**Made with ❤️ by Adarsh Gupta**
+
+</div>
